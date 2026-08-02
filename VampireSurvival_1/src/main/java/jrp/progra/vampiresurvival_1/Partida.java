@@ -3,10 +3,11 @@ package jrp.progra.vampiresurvival_1;
 import javax.swing.*;
 import java.awt.*;
 
+public class Partida extends JPanel{
 
-public class Partida {
+    static Image fondo = Toolkit.getDefaultToolkit().createImage("VampireSurvival_1\\src\\main\\resources\\fondo1.jpg");
+    public static void main(String[] args) {
 
-    public static void main(String[] args){
         JFrame marco = new JFrame();
         marco.getContentPane().setBackground(Color.black);
         marco.setLayout(new GridBagLayout());
@@ -18,7 +19,15 @@ public class Partida {
 
         marco.setVisible(true);
 
-        marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);;
+        marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ;
     }
-    
+
+    // @Override
+    // public void paintComponent(Graphics g){
+    //     super.paintComponent(g);
+    //     g.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
+    // }
+
+
 }

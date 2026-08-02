@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class Tablero extends JPanel {
-    public int tCasillas = 80;
+    public int tCasillas = 90;
 
     int col = 6;
     int fil = 6;
