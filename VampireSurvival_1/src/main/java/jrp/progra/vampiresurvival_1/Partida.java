@@ -23,11 +23,6 @@ public class Partida extends JPanel{
         ;
     }
 
-    // @Override
-    // public void paintComponent(Graphics g){
-    //     super.paintComponent(g);
-    //     g.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
-    // }
-
+    
 
 }
