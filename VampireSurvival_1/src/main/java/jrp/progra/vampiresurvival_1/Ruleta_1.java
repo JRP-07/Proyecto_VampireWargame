@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.util.List;
 import java.util.Random;
 
-public class RuletaSimple extends JPanel implements ActionListener {
+public class Ruleta_1 extends JPanel implements ActionListener {
     private double angulo = 0;
     private double velocidad = 0;
     private boolean girando = false;
@@ -15,7 +15,7 @@ public class RuletaSimple extends JPanel implements ActionListener {
     private String resultado = "";
     private Runnable alTerminar;
 
-    public RuletaSimple(List<String> opciones, Runnable alTerminar) {
+    public Ruleta_1(List<String> opciones, Runnable alTerminar) {
         this.opciones = opciones;
         this.alTerminar = alTerminar;
         this.timer = new javax.swing.Timer(20, this);

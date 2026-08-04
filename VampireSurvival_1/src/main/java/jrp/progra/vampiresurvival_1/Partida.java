@@ -11,7 +11,7 @@ public class Partida extends JPanel{
         JFrame marco = new JFrame();
         marco.getContentPane().setBackground(Color.black);
         marco.setLayout(new GridBagLayout());
-        marco.setMinimumSize(new Dimension(1000, 1000));
+        marco.setMinimumSize(new Dimension(1200, 950));
         marco.setLocationRelativeTo(null);
 
         Tablero tabla = new Tablero();

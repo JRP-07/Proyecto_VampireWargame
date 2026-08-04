@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
-public class PruebaRuletaSimple {
+public class PruebaRuleta_1 {
     public static void main(String[] args) {
         JFrame ventana = new JFrame("Prueba Simple de Ruleta");
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -14,9 +14,8 @@ public class PruebaRuletaSimple {
 
         List<String> opciones = Arrays.asList("Opción 1", "Opción 2", "Opción 3", "Opción 4");
 
-        // Usamos un arreglo para que el Runnable pueda acceder a la ruleta
-        final RuletaSimple[] ruletaRef = new RuletaSimple[1];
-        ruletaRef[0] = new RuletaSimple(opciones, () -> {
+        final Ruleta_1[] ruletaRef = new Ruleta_1[1];
+        ruletaRef[0] = new Ruleta_1(opciones, () -> {
             JOptionPane.showMessageDialog(ventana, "Resultado: " + ruletaRef[0].getResultado());
         });
 
