@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+import jrp.progra.vampiresurvival_1.Tablero;
+
+
 
 public abstract class Piezas {
     protected int col, fil;
@@ -16,6 +19,11 @@ public abstract class Piezas {
     protected int ataque;
     protected int escudo;
     protected BufferedImage imagen;
+    Tablero tablero;
+
+    // public Piezas(Tablero tablero){
+    //     this.tablero = tablero;
+    // }
 
     public void setPos(int col, int fil, int xPos, int yPos) {
         this.col = col;
@@ -36,10 +44,6 @@ public abstract class Piezas {
     public void paint(Graphics2D g2d) {
         if (imagen != null) {
             g2d.drawImage(imagen, xPos, yPos, 120, 120, null);
-
-            g2d.setStroke(new BasicStroke(5));
-            g2d.setColor(esBlanca ? Color.BLUE : Color.RED);
-            g2d.drawRect(xPos, yPos, 120, 120);
         }
     }
 
