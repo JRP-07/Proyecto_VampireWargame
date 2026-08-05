@@ -41,4 +41,8 @@ public class PruebaRuleta {
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
     }
+
+    public void llenarLista(){
+        // for()
+    }
 }

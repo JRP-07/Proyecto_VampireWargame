@@ -13,7 +13,7 @@ import jrp.progra.piezas.HombreLobo;
 import jrp.progra.piezas.Muerte;
 import jrp.progra.piezas.Piezas;
 import jrp.progra.piezas.Vampiro;
-import jrp.progra.piezas.zombie;
+import jrp.progra.piezas.Zombie;
 import jrp.progra.piezas.Bruja;
 
 public class Tablero extends JPanel {
@@ -46,66 +46,68 @@ public class Tablero extends JPanel {
 
     public void generarPiezas(){
         // Piezas lado superior (fil 0) - Equipo Blanco
-        Muerte m1=new Muerte();
-        m1.setEsBlanca(true);
-        m1.cargarImagenes();
-        agregarPieza(m1, 2, 0);
+        piezasJuego.add(new Muerte(this, 2, 0, true));
+        
+        // Muerte m1=new Muerte();
+        // m1.setEsBlanca(true);
+        // m1.cargarImagenes(true);
+        // agregarPieza(m1, 2, 0);
 
-        Bruja m2=new Bruja();
-        m2.setEsBlanca(true);
-        m2.cargarImagenes();
-        agregarPieza(m2, 3, 0);
+        // Bruja m2=new Bruja();
+        // m2.setEsBlanca(true);
+        // m2.cargarImagenes(true);
+        // agregarPieza(m2, 3, 0);
 
-        Vampiro v1=new Vampiro();
-        v1.setEsBlanca(true);
-        v1.cargarImagenes();
-        agregarPieza(v1, 4, 0);
+        // Vampiro v1=new Vampiro();
+        // v1.setEsBlanca(true);
+        // v1.cargarImagenes(true);
+        // agregarPieza(v1, 4, 0);
 
-        Vampiro v2=new Vampiro();
-        v2.setEsBlanca(true);
-        v2.cargarImagenes();
-        agregarPieza(v2, 1, 0);
+        // Vampiro v2=new Vampiro();
+        // v2.setEsBlanca(true);
+        // v2.cargarImagenes(true);
+        // agregarPieza(v2, 1, 0);
 
-        HombreLobo hb1 =new HombreLobo();
-        hb1.setEsBlanca(true);
-        hb1.cargarImagenes();
-        agregarPieza(hb1, 0, 0);
+        // HombreLobo hb1 =new HombreLobo();
+        // hb1.setEsBlanca(true);
+        // hb1.cargarImagenes(true);
+        // agregarPieza(hb1, 0, 0);
 
-        HombreLobo hb2 =new HombreLobo();
-        hb2.setEsBlanca(true);
-        hb2.cargarImagenes();
-        agregarPieza(hb2, 5, 0);
+        // HombreLobo hb2 =new HombreLobo();
+        // hb2.setEsBlanca(true);
+        // hb2.cargarImagenes(true);
+        // agregarPieza(hb2, 5, 0);
 
-        // Piezas lado inferior (fil 5) - Equipo Negro
-        Bruja m3=new Bruja();
-        m3.setEsBlanca(false);
-        m3.cargarImagenes();
-        agregarPieza(m3, 3, 5);
+        // // Piezas lado inferior (fil 5) - Equipo Negro
+        // Bruja m3=new Bruja();
+        // m3.setEsBlanca(false);
+        // m3.cargarImagenes(false);
+        // agregarPieza(m3, 3, 5);
 
-        Muerte m4=new Muerte();
-        m4.setEsBlanca(false);
-        m4.cargarImagenes();
-        agregarPieza(m4, 2, 5);
+        // Muerte m4=new Muerte();
+        // m4.setEsBlanca(false);
+        // m4.cargarImagenes(false);
+        // agregarPieza(m4, 2, 5);
 
-        Vampiro v3=new Vampiro();
-        v3.setEsBlanca(false);
-        v3.cargarImagenes();
-        agregarPieza(v3, 1, 5);
+        // Vampiro v3=new Vampiro();
+        // v3.setEsBlanca(false);
+        // v3.cargarImagenes(false);
+        // agregarPieza(v3, 1, 5);
 
-        Vampiro v4=new Vampiro();
-        v4.setEsBlanca(false);
-        v4.cargarImagenes();
-        agregarPieza(v4, 4, 5);
+        // Vampiro v4=new Vampiro();
+        // v4.setEsBlanca(false);
+        // v4.cargarImagenes(false);
+        // agregarPieza(v4, 4, 5);
 
-        HombreLobo hb3 =new HombreLobo();
-        hb3.setEsBlanca(false);
-        hb3.cargarImagenes();
-        agregarPieza(hb3, 5, 5);
+        // HombreLobo hb3 =new HombreLobo();
+        // hb3.setEsBlanca(false);
+        // hb3.cargarImagenes(false);
+        // agregarPieza(hb3, 5, 5);
 
-        HombreLobo hb4 =new HombreLobo();
-        hb4.setEsBlanca(false);
-        hb4.cargarImagenes();
-        agregarPieza(hb4, 0, 5);
+        // HombreLobo hb4 =new HombreLobo();
+        // hb4.setEsBlanca(false);
+        // hb4.cargarImagenes(false);
+        // agregarPieza(hb4, 0, 5);
     }
 
     @Override
