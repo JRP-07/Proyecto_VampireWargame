@@ -32,14 +32,14 @@ public abstract class Piezas {
         this.yPos = yPos;
     }
 
-    public void cargarImagenes(boolean esBlanco){
+    public void cargarImagenes(){
         try {
-            if(esBlanco){
-                this.nombre += "_blanco";
-            }
-            else{
-                this.nombre += "_negro";
-            }
+            // if(esBlanco){
+            //     this.nombre += "_blanco";
+            // }
+            // else{
+            //     this.nombre += "_negro";
+            // }
             this.imagen = ImageIO.read(getClass().getResourceAsStream("/" + this.nombre + ".png"));
         } catch (IOException | NullPointerException e) {
             System.out.println("Error cargando imagen para la pieza: " + nombre);

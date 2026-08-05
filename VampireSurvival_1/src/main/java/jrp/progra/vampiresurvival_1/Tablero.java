@@ -47,6 +47,7 @@ public class Tablero extends JPanel {
     public void generarPiezas(){
         // Piezas lado superior (fil 0) - Equipo Blanco
         piezasJuego.add(new Muerte(this, 2, 0, true));
+        piezasJuego.add(new Muerte(this, 2, 5, false));
         
         // Muerte m1=new Muerte();
         // m1.setEsBlanca(true);
