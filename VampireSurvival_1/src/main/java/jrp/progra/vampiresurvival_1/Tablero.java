@@ -47,8 +47,19 @@ public class Tablero extends JPanel {
     public void generarPiezas(){
         // Piezas lado superior (fil 0) - Equipo Blanco
         piezasJuego.add(new Muerte(this, 2, 0, true));
+        piezasJuego.add(new Bruja(this, 3, 0, true));
+        piezasJuego.add(new Vampiro(this, 4, 0, true));
+        piezasJuego.add(new Vampiro(this, 1, 0, true));
+        piezasJuego.add(new HombreLobo(this, 0, 0, true));
+        piezasJuego.add(new HombreLobo(this, 5, 0, true));
+
+        // Piezas lado inferior (fil 5) - Equipo Negro
         piezasJuego.add(new Muerte(this, 2, 5, false));
-        
+        piezasJuego.add(new Bruja(this, 3, 5, false));
+        piezasJuego.add(new Vampiro(this, 4, 5, false));
+        piezasJuego.add(new Vampiro(this, 1, 5, false));
+        piezasJuego.add(new HombreLobo(this, 0, 5, false));
+        piezasJuego.add(new HombreLobo(this, 5, 5, false));
         // Muerte m1=new Muerte();
         // m1.setEsBlanca(true);
         // m1.cargarImagenes(true);

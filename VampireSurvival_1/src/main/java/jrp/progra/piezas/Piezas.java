@@ -7,8 +7,6 @@ import java.io.IOException;
 
 import jrp.progra.vampiresurvival_1.Tablero;
 
-
-
 public abstract class Piezas {
     protected int col, fil;
     protected int xPos, yPos;
@@ -21,7 +19,7 @@ public abstract class Piezas {
     protected BufferedImage imagen;
     Tablero tablero;
 
-    public Piezas(Tablero tablero){
+    public Piezas(Tablero tablero) {
         this.tablero = tablero;
     }
 
@@ -32,15 +30,24 @@ public abstract class Piezas {
         this.yPos = yPos;
     }
 
-    public void cargarImagenes(){
+    public void cargarImagenes() {
         try {
             // if(esBlanco){
-            //     this.nombre += "_blanco";
+            // this.nombre += "_blanco";
             // }
             // else{
-            //     this.nombre += "_negro";
+            // this.nombre += "_negro";
             // }
             this.imagen = ImageIO.read(getClass().getResourceAsStream("/" + this.nombre + ".png"));
+        } catch (IOException | NullPointerException e) {
+            System.out.println("Error cargando imagen para la pieza: " + nombre);
+            e.printStackTrace();
+        }
+    }
+
+    public void cargarImagenes(String nombre) {
+        try {
+            this.imagen = ImageIO.read(getClass().getResourceAsStream("/" + nombre + ".png"));
         } catch (IOException | NullPointerException e) {
             System.out.println("Error cargando imagen para la pieza: " + nombre);
             e.printStackTrace();
@@ -57,5 +64,12 @@ public abstract class Piezas {
         this.esBlanca = esBlanca;
     }
 
-    
+    public int getCol() {
+        return col;
+    }
+
+    public int getFil() {
+        return fil;
+    }
+
 }

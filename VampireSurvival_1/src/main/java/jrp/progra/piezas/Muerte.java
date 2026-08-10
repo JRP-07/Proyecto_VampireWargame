@@ -22,17 +22,18 @@ public class Muerte extends Piezas{
 
         // this.cargarImagenes();
         
-        try {
-            if(esBlanca){
-                this.nombre += "_blanco";
-            }
-            else{
-                this.nombre += "_negro";
-            }
-            this.imagen = ImageIO.read(getClass().getResourceAsStream("/" + this.nombre + ".png"));
-        } catch (IOException | NullPointerException e) {
-            System.out.println("Error cargando imagen para la pieza: " + nombre);
-            e.printStackTrace();
+        if(esBlanca){
+            this.nombre += "_blanco";
         }
+        else{
+            this.nombre += "_negro";
+        }
+        cargarImagenes(this.nombre);
+        // try {
+        //     this.imagen = ImageIO.read(getClass().getResourceAsStream("/" + this.nombre + ".png"));
+        // } catch (IOException | NullPointerException e) {
+        //     System.out.println("Error cargando imagen para la pieza: " + nombre);
+        //     e.printStackTrace();
+        // }
     }
 }
