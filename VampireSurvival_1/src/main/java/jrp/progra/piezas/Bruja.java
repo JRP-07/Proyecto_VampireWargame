@@ -2,9 +2,9 @@ package jrp.progra.piezas;
 
 import jrp.progra.vampiresurvival_1.Tablero;
 
-public class Bruja extends Piezas{
+public class Bruja extends Muerte{
     public Bruja(Tablero tablero, int col, int fil, boolean esBlanca){
-        super(tablero);
+        super(tablero, col, fil, esBlanca);
         this.col=col;
         this.fil=fil;
         this.esBlanca=esBlanca;

@@ -29,11 +29,9 @@ public class Muerte extends Piezas{
             this.nombre += "_negro";
         }
         cargarImagenes(this.nombre);
-        // try {
-        //     this.imagen = ImageIO.read(getClass().getResourceAsStream("/" + this.nombre + ".png"));
-        // } catch (IOException | NullPointerException e) {
-        //     System.out.println("Error cargando imagen para la pieza: " + nombre);
-        //     e.printStackTrace();
-        // }
+    }
+
+    public boolean esMovimientoValido(int col, int fil){
+        return Math.max(Math.abs(col - this.col), Math.abs(fil - this.fil)) == 1;
     }
 }

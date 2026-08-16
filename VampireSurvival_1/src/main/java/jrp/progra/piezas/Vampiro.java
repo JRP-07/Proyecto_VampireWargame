@@ -24,4 +24,12 @@ public class Vampiro extends Piezas{
         }
         cargarImagenes(this.nombre);
     }
+
+
+    public boolean esMovimientoValido(int col, int fil){
+        int distCol = Math.abs(col - this.col);
+        int distFil = Math.abs(fil - this.fil);
+        int maxDist = Math.max(distCol, distFil);
+        return maxDist == 1   && (this.col==col || this.fil==fil || distCol == distFil);
+    }
 }

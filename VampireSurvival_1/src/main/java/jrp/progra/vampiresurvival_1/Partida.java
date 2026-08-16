@@ -14,8 +14,8 @@ public class Partida extends JPanel{
         marco.setMinimumSize(new Dimension(1200, 950));
         marco.setLocationRelativeTo(null);
 
-        Tablero tabla = new Tablero();
-        marco.add(tabla);
+        MenuInicio menu = new MenuInicio(marco);
+        marco.add(menu);
 
         marco.setVisible(true);
 

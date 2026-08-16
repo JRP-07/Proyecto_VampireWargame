@@ -19,18 +19,11 @@ public class Zombie extends Piezas{
         cargarImagenes(this.nombre);
     }
 
-    // public void cargarImagenes(){
-    //     try {
-    //         if(esBlanco){
-    //             this.nombre += "_blanco";
-    //         }
-    //         else{
-    //             this.nombre += "_negro";
-    //         }
-    //         this.imagen = ImageIO.read(getClass().getResourceAsStream("/" + this.nombre + ".png"));
-    //     } catch (IOException | NullPointerException e) {
-    //         System.out.println("Error cargando imagen para la pieza: " + nombre);
-    //         e.printStackTrace();
-    //     }
-    // }
+    public boolean esMovimientoValido(int col, int fil){
+        int distCol = Math.abs(col - this.col);
+        int distFil = Math.abs(fil - this.fil);
+        int maxDist = Math.max(distCol, distFil);
+        return maxDist == 1   && (this.col==col || this.fil==fil || distCol == distFil);
+    }
+
 }
