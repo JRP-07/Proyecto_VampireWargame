@@ -24,12 +24,12 @@ public class Partida extends JPanel{
         try {
             JFrame marco = new JFrame();
             marco.getContentPane().setBackground(Color.black);
-            marco.setLayout(new GridBagLayout());
+            marco.setLayout(new BorderLayout());
             marco.setMinimumSize(new Dimension(1200, 950));
             marco.setLocationRelativeTo(null);
 
             MenuInicio menu = new MenuInicio(marco);
-            marco.add(menu);
+            marco.add(menu, BorderLayout.CENTER);
 
             marco.setVisible(true);
 

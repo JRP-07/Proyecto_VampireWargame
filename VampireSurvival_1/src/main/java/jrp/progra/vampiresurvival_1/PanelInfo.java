@@ -56,6 +56,7 @@ public class PanelInfo extends JPanel {
         labelInstruccion.setAlignmentX(Component.CENTER_ALIGNMENT);
         panelRuleta.add(labelInstruccion);
 
+        //Llenado de la lista de la ruleta
         List<String> opciones = Arrays.asList("Vampiro", "Vampiro", "Hombre \nLobo", "Hombre \nLobo", "Muerte", "Bruja");
 
         ruleta = new Ruleta_1(opciones, new Runnable() {
