@@ -22,8 +22,21 @@ public class MiCuenta extends Fondo {
 
         this.setLayout(new GridBagLayout());
 
-        JPanel panelCentro = new JPanel();
+        // Panel con fondo semitransparente y borde para que la informacion resalte sobre la imagen
+        JPanel panelCentro = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                Graphics2D g2d = (Graphics2D) g.create();
+                g2d.setColor(new Color(0, 0, 0, 150));
+                g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
+                g2d.dispose();
+                super.paintComponent(g);
+            }
+        };
         panelCentro.setOpaque(false);
+        panelCentro.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.white, 2),
+                BorderFactory.createEmptyBorder(20, 30, 20, 30)));
         panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
 
         JLabel titulo = new JLabel("Mi cuenta");

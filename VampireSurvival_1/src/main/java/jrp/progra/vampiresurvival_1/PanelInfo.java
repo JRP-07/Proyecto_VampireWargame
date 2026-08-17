@@ -123,8 +123,8 @@ public class PanelInfo extends JPanel {
         MenuPrincipal menuPrincipal = new MenuPrincipal(marco, tablero.gestor, tablero.jugadorBlanco);
 
         marco.getContentPane().removeAll();
-        marco.setLayout(new GridBagLayout());
-        marco.add(menuPrincipal);
+        marco.setLayout(new BorderLayout());
+        marco.add(menuPrincipal, BorderLayout.CENTER);
 
         marco.revalidate();
         marco.repaint();

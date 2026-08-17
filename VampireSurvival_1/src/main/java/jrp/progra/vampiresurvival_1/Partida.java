@@ -33,6 +33,7 @@ public class Partida extends JPanel{
 
             marco.setVisible(true);
 
+            marco.setExtendedState(JFrame.MAXIMIZED_BOTH);
             marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         } catch (Exception error) {

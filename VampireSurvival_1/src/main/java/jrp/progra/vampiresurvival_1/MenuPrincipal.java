@@ -92,6 +92,12 @@ public class MenuPrincipal extends Fondo {
 
         marco.revalidate();
         marco.repaint();
+
+        JOptionPane.showMessageDialog(marco, 
+            "Gira la Ruleta para elegir que pieza se ha de mover.\n" +
+            "Arrastra la pieza o haz click en la casilla para moverla o para atacar.\n"+
+            "El Vampiro y la Muerte/Bruja tienen habilidades especiales, lee su descripcion para conocerlas. \n"+
+            "Pasa el mouse por encima de una carta para ver su informacion", "Como Jugar" , JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void abrirMiCuenta() {
