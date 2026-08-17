@@ -595,16 +595,23 @@ public class Tablero extends JPanel {
     }
 
     private void dibujarResaltados(Graphics2D g2d) {
-        if (piezaElegida == null) {
-            return;
+        // La pieza que habilito la ruleta se marca con borde amarillo
+        if (piezaPermitida != null) {
+            dibujarBorde(g2d, piezaPermitida);
         }
 
-        int columnaSeleccionada = piezaElegida.getCol();
-        int filaSeleccionada = piezaElegida.getFil();
+        // La pieza que el jugador tiene clickeada tambien se marca (si es otra)
+        if (piezaElegida != null && piezaElegida != piezaPermitida) {
+            dibujarBorde(g2d, piezaElegida);
+        }
+    }
+
+    private void dibujarBorde(Graphics2D g2d, Piezas pieza) {
+        int columna = pieza.getCol();
+        int fila = pieza.getFil();
 
         g2d.setColor(Color.YELLOW);
         g2d.setStroke(new BasicStroke(6));
-        g2d.drawRect(columnaSeleccionada * tCasillas + 3, filaSeleccionada * tCasillas + 3, tCasillas - 6,
-                tCasillas - 6);
+        g2d.drawRect(columna * tCasillas + 3, fila * tCasillas + 3, tCasillas - 6, tCasillas - 6);
     }
 }

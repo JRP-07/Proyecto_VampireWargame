@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuInicio extends JPanel {
+public class MenuInicio extends Fondo {
 
     GestorJugadores gestor;
 
@@ -18,13 +18,13 @@ public class MenuInicio extends JPanel {
     }
 
     public MenuInicio(JFrame marco, GestorJugadores gestor) {
+        super("fondo_1.jpg");
         this.gestor = gestor;
 
-        this.setBackground(Color.black);
         this.setLayout(new GridBagLayout());
 
         JPanel panelCentro = new JPanel();
-        panelCentro.setBackground(Color.black);
+        panelCentro.setOpaque(false);
         panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
 
         JLabel titulo = new JLabel("Vampire Survival");
@@ -140,8 +140,8 @@ public class MenuInicio extends JPanel {
         MenuPrincipal menuPrincipal = new MenuPrincipal(marco, gestor, jugador);
 
         marco.getContentPane().removeAll();
-        marco.setLayout(new GridBagLayout());
-        marco.add(menuPrincipal);
+        marco.setLayout(new BorderLayout());
+        marco.add(menuPrincipal, BorderLayout.CENTER);
 
         marco.revalidate();
         marco.repaint();

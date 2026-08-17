@@ -5,31 +5,31 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuPrincipal extends JPanel {
+public class MenuPrincipal extends Fondo {
 
     JFrame marco;
     GestorJugadores gestor;
     Jugador jugadorActual;
 
     public MenuPrincipal(JFrame marco, GestorJugadores gestor, Jugador jugadorActual) {
+        super("fondo_2.jpg");
         this.marco = marco;
         this.gestor = gestor;
         this.jugadorActual = jugadorActual;
 
-        this.setBackground(Color.black);
         this.setLayout(new GridBagLayout());
 
         JPanel panelCentro = new JPanel();
-        panelCentro.setBackground(Color.black);
+        panelCentro.setOpaque(false);
         panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
 
         JLabel titulo = new JLabel("Menu Principal");
-        titulo.setForeground(Color.white);
+        titulo.setForeground(Color.black);
         titulo.setFont(new Font("Arial", Font.BOLD, 32));
         titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel labelBienvenida = new JLabel("Bienvenido, " + jugadorActual.getUsuario());
-        labelBienvenida.setForeground(Color.lightGray);
+        labelBienvenida.setForeground(Color.BLACK);
         labelBienvenida.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton botonJugar = new JButton("Jugar Vampire Wargame");
@@ -87,8 +87,8 @@ public class MenuPrincipal extends JPanel {
         SeleccionOponente seleccion = new SeleccionOponente(marco, gestor, jugadorActual);
 
         marco.getContentPane().removeAll();
-        marco.setLayout(new GridBagLayout());
-        marco.add(seleccion);
+        marco.setLayout(new BorderLayout());
+        marco.add(seleccion, BorderLayout.CENTER);
 
         marco.revalidate();
         marco.repaint();
@@ -98,8 +98,8 @@ public class MenuPrincipal extends JPanel {
         MiCuenta miCuenta = new MiCuenta(marco, gestor, jugadorActual);
 
         marco.getContentPane().removeAll();
-        marco.setLayout(new GridBagLayout());
-        marco.add(miCuenta);
+        marco.setLayout(new BorderLayout());
+        marco.add(miCuenta, BorderLayout.CENTER);
 
         marco.revalidate();
         marco.repaint();
@@ -109,8 +109,8 @@ public class MenuPrincipal extends JPanel {
         Reportes reportes = new Reportes(marco, gestor, jugadorActual);
 
         marco.getContentPane().removeAll();
-        marco.setLayout(new GridBagLayout());
-        marco.add(reportes);
+        marco.setLayout(new BorderLayout());
+        marco.add(reportes, BorderLayout.CENTER);
 
         marco.revalidate();
         marco.repaint();
@@ -120,8 +120,8 @@ public class MenuPrincipal extends JPanel {
         MenuInicio menuInicio = new MenuInicio(marco, gestor);
 
         marco.getContentPane().removeAll();
-        marco.setLayout(new GridBagLayout());
-        marco.add(menuInicio);
+        marco.setLayout(new BorderLayout());
+        marco.add(menuInicio, BorderLayout.CENTER);
 
         marco.revalidate();
         marco.repaint();

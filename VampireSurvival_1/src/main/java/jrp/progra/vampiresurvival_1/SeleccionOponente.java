@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class SeleccionOponente extends JPanel {
+public class SeleccionOponente extends Fondo {
 
     JFrame marco;
     GestorJugadores gestor;
@@ -16,15 +16,15 @@ public class SeleccionOponente extends JPanel {
     ArrayList<Jugador> oponentesDisponibles;
 
     public SeleccionOponente(JFrame marco, GestorJugadores gestor, Jugador jugadorActual) {
+        super("fondo_2.jpg");
         this.marco = marco;
         this.gestor = gestor;
         this.jugadorActual = jugadorActual;
 
-        this.setBackground(Color.black);
         this.setLayout(new GridBagLayout());
 
         JPanel panelCentro = new JPanel();
-        panelCentro.setBackground(Color.black);
+        panelCentro.setOpaque(false);
         panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
 
         JLabel titulo = new JLabel("Elegir oponente");
@@ -104,15 +104,21 @@ public class SeleccionOponente extends JPanel {
 
         PanelInfo panelInfo = new PanelInfo(tablero);
 
-        JPanel panelJuego = new JPanel();
-        panelJuego.setBackground(Color.black);
+        JPanel panelJuego = new Fondo("fondo_3.jpg");
         panelJuego.setLayout(new BorderLayout());
-        panelJuego.add(tablero, BorderLayout.CENTER);
+
+        // Envoltorio transparente para que el tablero no se estire y se vea el fondo alrededor
+        JPanel vistaTablero = new JPanel();
+        vistaTablero.setOpaque(false);
+        vistaTablero.setLayout(new GridBagLayout());
+        vistaTablero.add(tablero);
+
+        panelJuego.add(vistaTablero, BorderLayout.CENTER);
         panelJuego.add(panelInfo, BorderLayout.EAST);
 
         marco.getContentPane().removeAll();
-        marco.setLayout(new GridBagLayout());
-        marco.add(panelJuego);
+        marco.setLayout(new BorderLayout());
+        marco.add(panelJuego, BorderLayout.CENTER);
 
         marco.revalidate();
         marco.repaint();
@@ -122,8 +128,8 @@ public class SeleccionOponente extends JPanel {
         MenuPrincipal menuPrincipal = new MenuPrincipal(marco, gestor, jugadorActual);
 
         marco.getContentPane().removeAll();
-        marco.setLayout(new GridBagLayout());
-        marco.add(menuPrincipal);
+        marco.setLayout(new BorderLayout());
+        marco.add(menuPrincipal, BorderLayout.CENTER);
 
         marco.revalidate();
         marco.repaint();

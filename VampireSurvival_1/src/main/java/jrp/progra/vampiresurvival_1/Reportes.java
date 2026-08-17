@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class Reportes extends JPanel {
+public class Reportes extends Fondo {
 
     JFrame marco;
     GestorJugadores gestor;
@@ -16,11 +16,11 @@ public class Reportes extends JPanel {
     CardLayout cardLayout;
 
     public Reportes(JFrame marco, GestorJugadores gestor, Jugador jugadorActual) {
+        super("fondo_1.jpg");
         this.marco = marco;
         this.gestor = gestor;
         this.jugadorActual = jugadorActual;
 
-        this.setBackground(Color.black);
         this.setLayout(new BorderLayout());
 
         JLabel titulo = new JLabel("Reportes", SwingConstants.CENTER);
@@ -29,7 +29,7 @@ public class Reportes extends JPanel {
         this.add(titulo, BorderLayout.NORTH);
 
         JPanel panelBotones = new JPanel();
-        panelBotones.setBackground(Color.black);
+        panelBotones.setOpaque(false);
 
         JButton botonRanking = new JButton("Ranking de jugadores");
         botonRanking.addActionListener(new ActionListener() {
@@ -59,7 +59,7 @@ public class Reportes extends JPanel {
 
         cardLayout = new CardLayout();
         panelContenido = new JPanel(cardLayout);
-        panelContenido.setBackground(Color.black);
+        panelContenido.setOpaque(false);
         panelContenido.add(crearPanelRanking(), "ranking");
         panelContenido.add(crearPanelHistorial(), "historial");
         this.add(panelContenido, BorderLayout.CENTER);
@@ -173,8 +173,8 @@ public class Reportes extends JPanel {
         MenuPrincipal menuPrincipal = new MenuPrincipal(marco, gestor, jugadorActual);
 
         marco.getContentPane().removeAll();
-        marco.setLayout(new GridBagLayout());
-        marco.add(menuPrincipal);
+        marco.setLayout(new BorderLayout());
+        marco.add(menuPrincipal, BorderLayout.CENTER);
 
         marco.revalidate();
         marco.repaint();

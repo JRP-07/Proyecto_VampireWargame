@@ -13,7 +13,7 @@ public class GestorJugadores implements AlmacenJugadores {
     public void agregarAlHistorial(String mensaje) {
         if (cantidadHistorial < historial.length) {
             historial[cantidadHistorial] = mensaje;
-            cantidadHistorial = cantidadHistorial++;
+            cantidadHistorial++;
         }
     }
 
@@ -39,7 +39,7 @@ public class GestorJugadores implements AlmacenJugadores {
     public void agregarJugador(Jugador jugador) {
         if (cantidad < jugadores.length) {
             jugadores[cantidad] = jugador;
-            cantidad = cantidad++;
+            cantidad++;
         }
     }
 

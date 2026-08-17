@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 
-public class MiCuenta extends JPanel {
+public class MiCuenta extends Fondo {
 
     JFrame marco;
     GestorJugadores gestor;
@@ -15,15 +15,15 @@ public class MiCuenta extends JPanel {
     JLabel labelMensaje;
 
     public MiCuenta(JFrame marco, GestorJugadores gestor, Jugador jugadorActual) {
+        super("fondo_4.jpg");
         this.marco = marco;
         this.gestor = gestor;
         this.jugadorActual = jugadorActual;
 
-        this.setBackground(Color.black);
         this.setLayout(new GridBagLayout());
 
         JPanel panelCentro = new JPanel();
-        panelCentro.setBackground(Color.black);
+        panelCentro.setOpaque(false);
         panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
 
         JLabel titulo = new JLabel("Mi cuenta");
@@ -124,8 +124,8 @@ public class MiCuenta extends JPanel {
 
             MenuInicio menuInicio = new MenuInicio(marco, gestor);
             marco.getContentPane().removeAll();
-            marco.setLayout(new GridBagLayout());
-            marco.add(menuInicio);
+            marco.setLayout(new BorderLayout());
+            marco.add(menuInicio, BorderLayout.CENTER);
             marco.revalidate();
             marco.repaint();
         }
@@ -136,8 +136,8 @@ public class MiCuenta extends JPanel {
         MenuPrincipal menuPrincipal = new MenuPrincipal(marco, gestor, jugadorActual);
 
         marco.getContentPane().removeAll();
-        marco.setLayout(new GridBagLayout());
-        marco.add(menuPrincipal);
+        marco.setLayout(new BorderLayout());
+        marco.add(menuPrincipal, BorderLayout.CENTER);
 
         marco.revalidate();
         marco.repaint();
