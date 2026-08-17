@@ -13,6 +13,7 @@ public abstract class Piezas {
 
     public boolean esBlanca;
     protected String nombre;
+    protected String alias;
     protected int vida;
     protected int ataque;
     protected int escudo;
@@ -39,13 +40,9 @@ public abstract class Piezas {
         }
     }
 
-    public boolean esMovimientoValido(int col, int fil){
-        return true;
-    }
+    public abstract boolean esMovimientoValido(int col, int fil);
 
-    public boolean chocaPieza(int col, int fil){
-        return false;
-    }
+    public abstract boolean chocaPieza(int col, int fil);
 
     public void paint(Graphics2D g2d) {
         if (imagen != null) {
@@ -54,23 +51,28 @@ public abstract class Piezas {
     }
 
 
-    public int getCol() {
+    public final int getCol() {
         return col;
     }
 
-    public int getFil() {
+    public final int getFil() {
         return fil;
     }
 
-    public String getNombre() {
+    public final String getNombre() {
         return nombre;
     }
 
-    public int getVida() {
+    public final String getAlias(){
+        return alias;
+    }
+
+    public final int getVida() {
         return vida;
     }
 
-    public boolean recibirDaño(int deal){
+    // Ataque normal, se resta del escudo
+    public boolean recibirHit(int deal){
         if(this.escudo<=deal){
             int dealR = deal-this.escudo;
             this.escudo=0;
@@ -80,6 +82,12 @@ public abstract class Piezas {
         return false;
     }
 
+    // Ataque especial, ignora el escudo del objetivo
+    public boolean recibirHitDirecto(int deal){
+        return muere(deal);
+    }
+
+    //Verificacion de si la pieza muere con el daño recibido
     public boolean muere(int deal){
         if(deal==0){
             return false;

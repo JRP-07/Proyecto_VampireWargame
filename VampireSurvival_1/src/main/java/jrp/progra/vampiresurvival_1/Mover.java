@@ -1,7 +1,8 @@
 package jrp.progra.vampiresurvival_1;
 import jrp.progra.piezas.Piezas;
 
-public class Mover {
+//Clase final que se encarga del movimiento de piezas
+public final class Mover {
     int aCol;
     int aFil;
     int nCol;

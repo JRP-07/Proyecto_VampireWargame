@@ -13,13 +13,14 @@ public class Ruleta_1 extends JPanel implements ActionListener {
     private javax.swing.Timer timer;
     private List<String> opciones;
     private String resultado = "";
+    private int resultadoIndice = -1;
     private Runnable alTerminar;
 
     public Ruleta_1(List<String> opciones, Runnable alTerminar) {
         this.opciones = opciones;
         this.alTerminar = alTerminar;
         this.timer = new javax.swing.Timer(20, this);
-        this.setPreferredSize(new Dimension(400, 400));
+        this.setPreferredSize(new Dimension(220, 220));
     }
 
     public void girar() {
@@ -38,9 +39,11 @@ public class Ruleta_1 extends JPanel implements ActionListener {
 
         int cx = getWidth() / 2;
         int cy = getHeight() / 2;
-        int radio = 150;
+        int radio = Math.min(cx, cy) - 10; // el radio se adapta al tamaño real del panel
 
         int anguloRebanada = 360 / opciones.size();
+        int tamañoLetra = Math.max(8, radio / 8);
+        g2d.setFont(new Font("SansSerif", Font.PLAIN, tamañoLetra));
 
         for (int i = 0; i < opciones.size(); i++) {
             g2d.setColor(i % 2 == 0 ? Color.LIGHT_GRAY : Color.WHITE);
@@ -53,15 +56,19 @@ public class Ruleta_1 extends JPanel implements ActionListener {
             int tx = (int) (cx + (radio * 0.6) * Math.cos(angleRad));
             int ty = (int) (cy - (radio * 0.6) * Math.sin(angleRad));
 
-            g2d.drawString(opciones.get(i), tx - 20, ty);
+            FontMetrics fm = g2d.getFontMetrics();
+            String texto = opciones.get(i);
+            g2d.drawString(texto, tx - (fm.stringWidth(texto) / 2), ty);
         }
 
         g2d.setColor(Color.BLACK);
-        g2d.setStroke(new BasicStroke(3));
-        g2d.drawLine(cx, cy - radio, cx, cy - radio - 20);
+        g2d.setStroke(new BasicStroke(Math.max(2f, radio / 40f)));
+        int largoFlecha = Math.max(6, radio / 8);
+        g2d.drawLine(cx, cy - radio, cx, cy - radio - largoFlecha);
 
         g2d.setColor(Color.DARK_GRAY);
-        g2d.fillOval(cx - 5, cy - 5, 10, 10);
+        int radioCentro = Math.max(4, radio / 15);
+        g2d.fillOval(cx - radioCentro, cy - radioCentro, radioCentro * 2, radioCentro * 2);
     }
 
     @Override
@@ -86,6 +93,7 @@ public class Ruleta_1 extends JPanel implements ActionListener {
 
         if (index >= 0 && index < opciones.size()) {
             resultado = opciones.get(index);
+            resultadoIndice = index;
         }
 
         if (alTerminar != null) {
@@ -95,5 +103,10 @@ public class Ruleta_1 extends JPanel implements ActionListener {
 
     public String getResultado() {
         return resultado;
+    }
+
+    // Posicion (0 a 5) donde cayo la ruleta. Sirve para saber a cual de las fehcas corresponde al resultado
+    public int getResultadoIndice() {
+        return resultadoIndice;
     }
 }

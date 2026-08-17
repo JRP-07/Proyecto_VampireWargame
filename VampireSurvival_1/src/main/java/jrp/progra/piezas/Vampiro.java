@@ -8,7 +8,10 @@ public class Vampiro extends Piezas{
         this.col=col;
         this.fil=fil;
         this.esBlanca=esBlanca;
+        //Nombre asignado a la imagen
         this.nombre="Vampiro2";
+        //Nombre asignado a la pieza por el juego
+        this.alias="Vampiro";
         this.vida=4;
         this.ataque=3;
         this.escudo=5;
@@ -31,5 +34,16 @@ public class Vampiro extends Piezas{
         int distFil = Math.abs(fil - this.fil);
         int maxDist = Math.max(distCol, distFil);
         return maxDist == 1   && (this.col==col || this.fil==fil || distCol == distFil);
+    }
+
+    public boolean chocaPieza(int col, int fil){
+        return false;
+    }
+
+    // Habilidad especial: absorber sangre. Resta 1 punto al enemigo y se regenera 1
+    public boolean absorberSangre(Piezas objetivo){
+        boolean murio = objetivo.recibirHit(1);
+        this.vida += 1;
+        return murio;
     }
 }

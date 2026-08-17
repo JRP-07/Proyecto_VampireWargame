@@ -8,19 +8,42 @@ public class Partida extends JPanel{
     static Image fondo = Toolkit.getDefaultToolkit().createImage("VampireSurvival_1\\src\\main\\resources\\fondo1.jpg");
     public static void main(String[] args) {
 
-        JFrame marco = new JFrame();
-        marco.getContentPane().setBackground(Color.black);
-        marco.setLayout(new GridBagLayout());
-        marco.setMinimumSize(new Dimension(1200, 950));
-        marco.setLocationRelativeTo(null);
+        // Atrapa cualquier error que surja
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            public void uncaughtException(Thread hilo, Throwable error) {
+                error.printStackTrace();
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Ocurrio un error inesperado:\n" + error,
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+                );
+            }
+        });
 
-        MenuInicio menu = new MenuInicio(marco);
-        marco.add(menu);
+        try {
+            JFrame marco = new JFrame();
+            marco.getContentPane().setBackground(Color.black);
+            marco.setLayout(new GridBagLayout());
+            marco.setMinimumSize(new Dimension(1200, 950));
+            marco.setLocationRelativeTo(null);
 
-        marco.setVisible(true);
+            MenuInicio menu = new MenuInicio(marco);
+            marco.add(menu);
 
-        marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ;
+            marco.setVisible(true);
+
+            marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        } catch (Exception error) {
+            error.printStackTrace();
+            JOptionPane.showMessageDialog(
+                null,
+                "No se pudo iniciar el programa:\n" + error,
+                "Error",
+                JOptionPane.ERROR_MESSAGE
+            );
+        }
     }
 
     
