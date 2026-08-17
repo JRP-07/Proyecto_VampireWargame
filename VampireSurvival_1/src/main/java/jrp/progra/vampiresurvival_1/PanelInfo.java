@@ -279,7 +279,7 @@ public class PanelInfo extends JPanel {
         g2d.drawString("Vida: " + seleccionada.getVida(), 10, y + 20);
         g2d.drawString("Ataque: " + seleccionada.getAtaque(), 10, y + 40);
         g2d.drawString("Escudo: " + seleccionada.getEscudo(), 10, y + 60);
-        if(seleccionada.getAlias().equals("Muerte"))
+        if(seleccionada.getAlias().equals("Muerte") || seleccionada.getAlias().equals("Bruja"))
             g2d.drawString("Click derecho para ver el panel de habilidades de " + seleccionada.getAlias(), 10, 80);
         if(seleccionada.getAlias().equals("Vampiro"))
             g2d.drawString("Click derecho para usar su habilidad especial (Robo de vida)", 10, 80);

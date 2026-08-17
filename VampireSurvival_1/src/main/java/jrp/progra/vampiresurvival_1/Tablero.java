@@ -105,6 +105,12 @@ public class Tablero extends JPanel {
         if (piezaBajoMouse.getAlias().equals("Vampiro")) {
             info = "Click derecho sobre una pieza para robar vida";
         }
+        if(piezaBajoMouse.getAlias().equals("HombreLobo")){
+            info="Se puede mover dos casillas a la vez";
+        }
+        if(piezaBajoMouse.getAlias().equals("Zombie")||piezaBajoMouse.getAlias().equals("Esqueleto")){
+            info="Estorba";
+        }
         return "<html>" + piezaBajoMouse.getAlias()
                 + "<br>Vida: " + piezaBajoMouse.getVida()
                 + "<br>Ataque: " + piezaBajoMouse.getAtaque()
@@ -193,7 +199,7 @@ public class Tablero extends JPanel {
         String nombreRetirado = nombreDe(turnoBlanco);
         String nombreGanador = nombreDe(ganoElBlanco);
 
-        mensajeFinal = nombreRetirado + " se ha retirado. ¡Felicidades, " + nombreGanador + ", has ganado la partida!";
+        mensajeFinal = nombreRetirado + " se ha retirado. ¡Felicidades, " + nombreGanador + ", has ganado la partida y conseguido 3 puntos!";
         partidaTerminada = true;
 
         registrarResultado(ganoElBlanco);

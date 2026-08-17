@@ -12,6 +12,7 @@ public class Ruleta_1 extends JPanel implements ActionListener {
     private boolean girando = false;
     private javax.swing.Timer timer;
     private List<String> opciones;
+    private Image[] imagenes;
     private String resultado = "";
     private int resultadoIndice = -1;
     private Runnable alTerminar;
@@ -21,6 +22,32 @@ public class Ruleta_1 extends JPanel implements ActionListener {
         this.alTerminar = alTerminar;
         this.timer = new javax.swing.Timer(20, this);
         this.setPreferredSize(new Dimension(220, 220));
+
+        // Se carga la imagen de cada tipo de pieza para dibujarla en su rebanada
+        imagenes = new Image[opciones.size()];
+        for (int i = 0; i < opciones.size(); i++) {
+            imagenes[i] = cargarImagen(opciones.get(i));
+        }
+    }
+
+    // Convierte el nombre de la opcion en la imagen de la carta correspondiente
+    private Image cargarImagen(String opcion) {
+        String nombreLimpio = opcion.replace("\n", "").replace(" ", "").trim();
+        String archivo;
+
+        if (nombreLimpio.equals("Vampiro")) {
+            archivo = "/Vampiro2_blanco.png";
+        } else if (nombreLimpio.equals("HombreLobo")) {
+            archivo = "/HombreLobo_blanco.png";
+        } else if (nombreLimpio.equals("Muerte")) {
+            archivo = "/Muerte2_blanco.png";
+        } else if (nombreLimpio.equals("Bruja")) {
+            archivo = "/Bruja_blanco.png";
+        } else {
+            return null;
+        }
+
+        return new ImageIcon(getClass().getResource(archivo)).getImage();
     }
 
     public void girar() {
@@ -42,8 +69,6 @@ public class Ruleta_1 extends JPanel implements ActionListener {
         int radio = Math.min(cx, cy) - 10; // el radio se adapta al tamaño real del panel
 
         int anguloRebanada = 360 / opciones.size();
-        int tamañoLetra = Math.max(8, radio / 8);
-        g2d.setFont(new Font("SansSerif", Font.PLAIN, tamañoLetra));
 
         for (int i = 0; i < opciones.size(); i++) {
             g2d.setColor(i % 2 == 0 ? Color.LIGHT_GRAY : Color.WHITE);
@@ -51,14 +76,15 @@ public class Ruleta_1 extends JPanel implements ActionListener {
             int startAngle = (int)(i * anguloRebanada + angulo);
             g2d.fillArc(cx - radio, cy - radio, radio * 2, radio * 2, startAngle, anguloRebanada);
 
-            g2d.setColor(Color.BLACK);
             double angleRad = Math.toRadians(startAngle + anguloRebanada / 2.0);
             int tx = (int) (cx + (radio * 0.6) * Math.cos(angleRad));
             int ty = (int) (cy - (radio * 0.6) * Math.sin(angleRad));
 
-            FontMetrics fm = g2d.getFontMetrics();
-            String texto = opciones.get(i);
-            g2d.drawString(texto, tx - (fm.stringWidth(texto) / 2), ty);
+            Image imagen = imagenes[i];
+            if (imagen != null) {
+                int tamañoImagen = Math.max(20, radio / 2);
+                g2d.drawImage(imagen, tx - tamañoImagen / 2, ty - tamañoImagen / 2, tamañoImagen, tamañoImagen, this);
+            }
         }
 
         g2d.setColor(Color.BLACK);
